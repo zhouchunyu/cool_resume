@@ -43,7 +43,9 @@ body {
 
 `;
 
-var selfInfoString = `/* 我是周春雨，我为自己袋盐 */
+var selfInfoString = `/* 我是周春雨，我喂自己袋盐
+我来自东华大学，硕士是数字图像处理方向。
+*/
 `;
 
 var js = "var data = 1;";
@@ -59,7 +61,7 @@ id = setInterval(() => {
     createSelfInfo();
     addSelfInfo();
   }
-}, 10)
+}, 100)
 
 function createSelfInfo(){
   div = document.createElement('div');
@@ -76,5 +78,5 @@ function addSelfInfo(){
     if(n === result.length ){
       window.clearInterval(addSelfInfoId);
     }
-  }, 10)
+  }, 100)
 }
