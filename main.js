@@ -43,10 +43,11 @@ body {
 
 `;
 
-var selfInfoString = `/* 我是周春雨，我喂自己袋盐
-我来自东华大学，硕士是数字图像处理方向。
+var selfInfoString = `/* 我是zcy4coding，我喂自己袋盐。
+想要更多了解我可以访问我的个人网站
 */
 `;
+
 
 var js = "var data = 1;";
 
@@ -59,9 +60,9 @@ id = setInterval(() => {
     console.log('clear')
     window.clearInterval(id);
     createSelfInfo();
-    addSelfInfo();
+    addSelfInfo(addResumeLink);
   }
-}, 100)
+}, 50)
 
 function createSelfInfo(){
   div = document.createElement('div');
@@ -69,14 +70,23 @@ function createSelfInfo(){
   document.body.appendChild(div);
 }
 
-function addSelfInfo(){
+function addSelfInfo(cb){
   var n = 0;
   addSelfInfoId = setInterval(() => {
     n+=1;
-    selfInfo.innerHTML += Prism.highlight(selfInfoString.substring(n-1, n), Prism.languages.css);
-    styleTag.innerHTML += result.substring(n-1, n);
-    if(n === result.length ){
+    selfInfo.innerHTML += selfInfoString.substring(n-1, n);
+    styleTag.innerHTML += selfInfoString.substring(n-1, n);
+    if(n === selfInfoString.length ){
       window.clearInterval(addSelfInfoId);
+      cb.call();
     }
-  }, 100)
+  }, 50)
+}
+
+function addResumeLink() {
+  resume_link = document.createElement('a');
+  resume_link.href = "https://zhouchunyu.github.io/resume/";
+  resume_link.target = '_blank';
+  resume_link.innerHTML = '个人简历';
+  selfInfo.appendChild(resume_link);
 }
